@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เมนูคลื่น</title>
+  <link rel="stylesheet" href="Home.css">
+</head>
+<body>
+  <div class="container">
+    <div class="section">
+      <a href="home.html" class="title home-title ripple">Home</a>
+      <div class="box home"></div>
+    </div>
+    <div class="section">
+      <a href="profile.html" class="title profile-title ripple">Profile</a>
+      <div class="box profile"></div>
+    </div>
+    <div class="section">
+      <a href="contact.html" class="title contact-title ripple">Contact</a>
+      <div class="box contact"></div>
+    </div>
+  </div>
+
+  <script>
+    // สร้าง ripple animation ตอนคลิก
+    document.querySelectorAll('.ripple').forEach(button => {
+      button.addEventListener('click', function (e) {
+        const circle = document.createElement('span');
+        const x = e.clientX - e.target.getBoundingClientRect().left;
+        const y = e.clientY - e.target.getBoundingClientRect().top;
+        circle.style.left = x + 'px';
+        circle.style.top = y + 'px';
+        circle.classList.add('ripple-circle');
+        this.appendChild(circle);
+
+        setTimeout(() => {
+          circle.remove();
+        }, 600);
+      });
+    });
+  </script>
+</body>
+</html>
